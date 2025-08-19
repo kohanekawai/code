@@ -38,6 +38,12 @@ def create
     end
   end
 
+  def destroy
+    tweet = Tweet.find(params[:id])
+    tweet.destroy
+    redirect_to action: :index
+  end
+
  def search
     @tag_list = Tag.all               # こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
     @tag = Tag.find(params[:tag_id])  # クリックしたタグを取得

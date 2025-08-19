@@ -13,13 +13,12 @@
   <% @tweets.each do |t| %>
     <div class="tweet">
       <%= image_tag t.image_url, size: "250x200" if t.image? %><br>
-      <%= t.user.email %>
       <%= t.item %>
       <%= t.point %>
       <% t.tags.each do |tag| %>
         <%= link_to tag.tag_name, tag_tweets_path(tag_id: tag.id) %>
       <% end %>
-
+      
       <% if user_signed_in? %>
         <% if current_user.already_liked?(t) %>
           <% like = current_user.likes.find_by(tweet_id: t.id) %>
@@ -32,6 +31,7 @@
           <% end %>
         <% end %>
       <% end %>
+    <%= button_to "削除する", tweet_path(t.id), method: :delete %>
     </div>
   <% end %>
 </div>

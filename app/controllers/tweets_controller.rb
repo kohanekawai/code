@@ -35,7 +35,7 @@ def create
 
   private
   def tweet_params
-    params.require(:tweet).permit(:item, :point,:image)
+    params.require(:tweet).permit(:item, :point,:image, tag_ids: [])
   end
 
 

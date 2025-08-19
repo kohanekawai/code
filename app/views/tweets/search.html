@@ -3,7 +3,7 @@
 <% @itirans.each do |t| %>
     <%= link_to t.body, t %>               #index.html.erbみたいに持ってきた情報をtに代入してtweetsテーブルのbodyカラムを表示します。
     <br>
-    <% t.tags.each do |tag| %>
+    <% t.tags.each do |tag_name| %>
     <%= link_to tag.tag_name, tag_tweets_path(tag_id: tag.id) %>
     <% end %>
 <% end %>

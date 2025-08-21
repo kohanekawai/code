@@ -1,0 +1,48 @@
+<h1>user</h1>
+<p>名前 : <%= @user.name %></p>
+<p>メールアドレス : <%= @user.email %></p>
+<p>プロフィール : <%= @user.profile %></p>
+
+<% if current_user.id == @user.id %>
+  <%= link_to "編集する", edit_user_registration_path %>
+<% end %>
+
+<h2>ユーザーの投稿一覧</h2>
+<div class="tweet-list">
+  <% @user.tweets.each do |t| %>
+    <div class="tweet-card">
+      <% if t.image? %>
+        <div class="tweet-image">
+          <%= image_tag t.image_url, size: "250x200" %>
+        </div>
+      <% end %>
+
+      <div class="tweet-content">
+        <p><strong>Date：</strong> <%= t.item %></p>
+        <p><strong>Date：</strong> <%= t.point %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<!-- 以下はいいね機能を実装している場合-->
+<h2>ユーザーがいいねした投稿一覧</h2>
+<div class="tweet-list">
+  <% @user.tweets.each do |t| %>
+    <div class="tweet-card">
+      <% if t.image? %>
+        <div class="tweet-image">
+          <%= image_tag t.image_url, size: "250x200" %>
+        </div>
+      <% end %>
+
+      <div class="tweet-content">
+        <p><strong>Date：</strong> <%= t.item %></p>
+        <p><strong>ポイント：</strong> <%= t.point %></p>
+      </div>
+    </div>
+  <% end %>
+<!-- ここまで-->
+
+<%= link_to "Tweet一覧に戻る", tweets_path %>

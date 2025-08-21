@@ -1,0 +1,125 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/* ページ全体 */
+body {
+  background: #f9f9f9;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* 見出し */
+h3 {
+  text-align: center;
+  margin: 30px 0 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* フォーム全体 */
+form {
+  width: 90%;
+  max-width: 500px;   /* 最大幅を決める */
+  margin: 0 auto;     /* 中央揃え */
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+/* 各入力フィールド */
+.field {
+  margin-bottom: 18px;
+}
+
+.field label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.field textarea,
+.field input[type="text"],
+.field input[type="file"],
+.field input[type="email"],
+.field input[type="password"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.field textarea:focus,
+.field input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+/* タグ部分 */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-check {
+  margin-bottom: 8px;
+}
+
+.form-check-label {
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-check-input {
+  margin-right: 6px;
+}
+
+/* 送信ボタン */
+input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  background: #3498db;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+input[type="submit"]:hover {
+  background: #2980b9;
+}
+
+/* 戻るリンク */
+a {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  text-decoration: none;
+  color: #3498db;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}

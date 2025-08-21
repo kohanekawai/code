@@ -21,16 +21,19 @@
  <header>
   <h1>My Codes</h1>
 
-  <div class="header-list">
-   <ul>
+<div class="header-list">
+  <ul>
     <% if user_signed_in? %>
-     <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      <li>
+        <%= button_to 'ログアウト', destroy_user_session_path,method: :delete,class: "header-btn", form: { class: "inline-form" } %>
+      </li>
     <% else %>
-     <li><%= link_to "新規登録", new_user_registration_path %></li>
-     <li><%= link_to "ログイン", new_user_session_path %></li>
+      <li><%= link_to "新規登録", new_user_registration_path, class: "header-btn" %></li>
+      <li><%= link_to "ログイン", new_user_session_path, class: "header-btn" %></li>
     <% end %>
-   </ul>
-  </div>
+  </ul>
+</div>
+
  </header>
  <main>
   <%= yield %>
@@ -38,3 +41,4 @@
 </body>
 
 </html>
+

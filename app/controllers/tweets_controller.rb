@@ -2,21 +2,29 @@ class TweetsController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :create]
 
-  def index
-    @tweets = Tweet.all 
-     if params[:tag_ids].present?
-            tweet_ids = []
-            params[:tag_ids].each do |key, value| 
-              if value == "1"
-                tag_tweets = Tag.find_by(tag_name: key).tweets
-                @tweets = @tweets.empty? ? tag_tweets : @tweets & tag_tweets
-                puts key
-              end
-            end
-            tweet_ids = tweet_ids.uniq
-            @tweets = @tweets.where(id: tweet_ids) if tweet_ids.present?
+def index
+  @tweets = Tweet.all 
+
+  if params[:tag_ids].present?
+    tweet_ids = []
+
+    params[:tag_ids].each do |key, value|
+      if value == "1"
+        tag = Tag.find_by(tag_name: key)
+        if tag.present?
+          tag_tweets = tag.tweets
+          @tweets = @tweets.empty? ? tag_tweets : @tweets & tag_tweets
+          tweet_ids.concat(tag_tweets.pluck(:id))
+          puts key
         end
+      end
+    end
+
+    tweet_ids = tweet_ids.uniq
+    @tweets = @tweets.where(id: tweet_ids) if tweet_ids.present?
   end
+end
+
   
  def new
     @tweet = Tweet.new

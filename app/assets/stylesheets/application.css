@@ -13,3 +13,70 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: "fantasy", "fantasy", "fantasy",
+    Meiryo, "fantasy", sans-serif;
+}
+header {
+  background-color: #322dd4;
+  height: 300px;
+  font-weight: bolder;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header a {
+  color: white; 
+  text-decoration: none; 
+}
+header h1 {
+  color: rgb(230, 219, 161);
+  margin-left: 40px;
+  font-family: "fantasy"
+}
+.header-list {
+  display: flex;
+  align-items: center;
+}
+header ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;        /* 横並び */
+  gap: 10px;            /* ボタン間のスペース */
+}
+header li {
+  margin: 0;
+}
+
+.inline-form {
+  display: inline;
+  margin: 0;
+}
+
+/* ボタン共通デザイン */
+.header-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  background-color: #3498db;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;         /* button_to の border 消す */
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+/* ホバーで拡大＆色変更 */
+.header-btn:hover {
+  transform: scale(1.1);
+  background-color: #2980b9;
+}

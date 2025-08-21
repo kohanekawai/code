@@ -1,0 +1,227 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+h3{
+    text-align: center;
+    position: relative;
+    padding: 1.5rem;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+h3:before {
+  position: absolute;
+  bottom: -10px;
+  left: calc(50% - 30px);
+  width: 60px;
+  height: 5px;
+  content: '';
+  border-radius: 3px;
+  background: #2931c8;
+  margin-bottom: 20px;
+}
+
+.tweets-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.tweet{
+    text-align: center;
+}
+
+.delete-btn {
+  background-color: #6575df;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s; 
+}
+
+.delete-btn:hover {
+  transform: scale(1.1);
+  background-color: #2b21ba; 
+}
+
+.like-btn {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  transition: transform 0.2s, color 0.2s;
+  text-decoration: none; /* リンク装飾を消す */
+  color: #555;
+}
+
+.like-btn .like-count {
+  margin-left: 5px;
+  font-size: 16px;
+}
+
+/* ホバーでハートを拡大＆色変更 */
+.like-btn:hover {
+  transform: scale(1.2);
+  color: #e74c3c; /* 赤色に変更 */
+}
+
+/* いいね済みの状態 */
+.like-btn.liked {
+  color: #e74c3c; /* 赤色で表示 */
+}
+
+/* いいね済みボタンをホバーでさらに大きく */
+.like-btn.liked:hover {
+  transform: scale(1.3);
+}
+
+.header-right-buttons {
+  display: flex;
+  gap: 10px;                  /* ボタン間のスペース */
+  justify-content: flex-end;   /* 右揃え */
+  align-items: center;
+  margin: 10px 0;
+}
+
+.header-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;                   /* アイコンと文字の間 */
+  padding: 6px 14px;
+  background-color: #ecc87b;  /* 青系 */
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.header-btn:hover {
+  transform: scale(1.1);      /* ホバーで少し拡大 */
+  background-color: #efa61d;  /* 色を濃く */
+}
+
+/* アイコンサイズ調整 */
+.header-btn i {
+  font-size: 30px;
+}
+
+.tag-list-right {
+  display: flex;
+  flex-direction: column;   /* 縦並び */
+  align-items: center;    /* 右揃え */
+  margin-top: 50px;
+  margin: 10px;
+}
+
+.tag-list-right ul {
+  list-style: none;        /* デフォルトの点を消す */
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+
+.tag-list-right li {
+  margin-bottom: 5px;
+}
+
+/* 検索ボタンを右に揃えつつデザイン */
+.tag-submit-btn {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.tag-submit-btn:hover {
+  transform: scale(1.1);       /* ホバーで少し拡大 */
+  background-color: #2980b9;
+}
+
+.tweet {
+  text-align: center;     /* 中央揃え */
+  margin: 20px auto;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  width: 300px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.tweet img {
+  display: block;
+  margin: 0 auto 10px auto;
+  border-radius: 8px;
+}
+
+.tweet-item,
+.tweet-point,
+.tweet-tags,
+.tweet-user,
+.tweet-actions {
+  margin: 8px 0;
+}
+
+.tweet-tags a {
+  display: inline-block;
+  background: #f1f1f1;
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin: 2px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #555;
+}
+
+.tweet-tags a:hover {
+  background: #3498db;
+  color: #fff;
+}
+
+.like-btn {
+  font-size: 18px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.like-btn:hover {
+  transform: scale(1.2);
+}
+
+.delete-btn {
+  margin-top: 10px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #e74c3c;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.delete-btn:hover {
+  transform: scale(1.1);
+  background: #c0392b;
+}

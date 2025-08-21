@@ -1,9 +1,9 @@
-<h1>(code)</h1>
+
 <h3>新規投稿ページ</h3>
 <%= form_for @tweet do |f| %>
 
    <div class="field">
-    <%= f.label :アイテム  %>
+    <%= f.label :Date  %>
     <%= f.text_area :item, :size => "30x2" %>
   </div>  
 
@@ -13,7 +13,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :ポイント  %>
+    <%= f.label :Point  %>
     <%= f.text_area :point, :size => "30x2" %>
   </div>
   <div class='form-group'>

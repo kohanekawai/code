@@ -1,37 +1,72 @@
-<h3>Tweet一覧</h3>
-<%= link_to "新規投稿へ", new_tweet_path %>
 
-<h3>タグリスト</h3>
-<%= form_tag({controller: "tweets", action: "index"}, method: :get) do %>
-  <% Tag.all.each do |tag| %>
-    <li><%= check_box :tag_ids, tag.tag_name %><%= tag.tag_name %></li>
+<div class="tag-list-right">
+  <h4>タグリスト</h4>
+  <%= form_tag({controller: "tweets", action: "index"}, method: :get) do %>
+    <ul>
+      <% Tag.all.each do |tag| %>
+        <li>
+          <%= check_box :tag_ids, tag.id %>
+          <%= tag.tag_name %>
+        </li>
+      <% end %>
+    </ul>
+    <%= submit_tag '検索', class: "tag-submit-btn" %>
   <% end %>
-  <%= submit_tag '検索' %>
+</div>
+
+
+
+<h3>投稿一覧</h3>
+
+<% if user_signed_in? %>
+  <div class="header-left-buttons">
+    <%= link_to new_tweet_path, class: "header-btn new-tweet" do %>
+      <i class="fa fa-plus"></i> 新規投稿へ
+    <% end %>
+
+    <%= link_to user_path(current_user.id), class: "header-btn my-page" do %>
+      <i class="fa fa-user"></i> マイページへ
+    <% end %>
+  </div>
 <% end %>
 
 <div class="tweets-container">
   <% @tweets.each do |t| %>
     <div class="tweet">
-      <%= image_tag t.image_url, size: "250x200" if t.image? %><br>
-      <%= t.item %>
-      <%= t.point %>
-      <% t.tags.each do |tag| %>
-        <%= link_to tag.tag_name, tag_tweets_path(tag_id: tag.id) %>
-      <% end %>
-      
-      <% if user_signed_in? %>
-        <% if current_user.already_liked?(t) %>
-          <% like = current_user.likes.find_by(tweet_id: t.id) %>
-          <%= link_to tweet_like_path(t, like), data: { turbo_method: :delete } do %>
-            いいねを取り消す <%= t.likes.count %>
-          <% end %>
-        <% else %>
-          <%= link_to tweet_likes_path(t), data: { turbo_method: :post } do %>
-            いいね <%= t.likes.count %>
-          <% end %>
+      <%= image_tag t.image_url, size: "250x200" if t.image? %>
+
+      <div class="tweet-item"><%= t.item %></div>
+      <div class="tweet-point"><%= t.point %></div>
+      <div class="tweet-tags">
+        <% t.tags.each do |tag| %>
+          <%= link_to tag.tag_name, tag_tweets_path(tag_id: tag.id) %>
         <% end %>
-      <% end %>
-    <%= button_to "削除する", tweet_path(t.id), method: :delete %>
+      </div>
+      <div class="tweet-user"><%= link_to t.user.name, user_path(t.user.id) %></div>
+
+      <div class="tweet-actions">
+        <% if user_signed_in? %>
+          <% if current_user.already_liked?(t) %>
+            <% like = current_user.likes.find_by(tweet_id: t.id) %>
+            <%= link_to tweet_like_path(t, like), 
+                        data: { turbo_method: :delete }, 
+                        class: "like-btn liked" do %>
+              ❤️ <span class="like-count"><%= t.likes.count %></span>
+            <% end %>
+          <% else %>
+            <%= link_to tweet_likes_path(t), 
+                        data: { turbo_method: :post }, 
+                        class: "like-btn" do %>
+              🤍 <span class="like-count"><%= t.likes.count %></span>
+            <% end %>
+          <% end %>
+
+          <%= button_to "削除する", tweet_path(t.id), 
+                        method: :delete, 
+                        class: "delete-btn", 
+                        form: { class: "inline-form" } %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>
